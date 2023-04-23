@@ -28,21 +28,21 @@ camera.add(pointLight);
 scene.add(camera);
 
 // Load data from the SQLite database
-var db = new sqlite3.Database("mydatabase.db");
+var db = new sqlite3.Database("test_db.db");
 var data = [];
 
-db.all("SELECT * FROM mytable", [], function (err, rows) {
+db.all("SELECT * FROM walls", [], function (err, rows) {
   if (err) throw err;
 
   // Process the data and create 3D geometries
   for (var i = 0; i < rows.length; i++) {
     var row = rows[i];
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var geometry = new THREE.BoxGeometry(1, 1, row.thickness);
     var material = new THREE.MeshLambertMaterial({ color: "#0099ff" });
     var cube = new THREE.Mesh(geometry, material);
-    cube.position.x = row.x;
-    cube.position.y = row.y;
-    cube.position.z = row.z;
+    cube.position.x = row.id;
+    cube.position.y = 0.5;
+    cube.position.z = 0;
     scene.add(cube);
   }
 });
