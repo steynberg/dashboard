@@ -48,7 +48,7 @@ xhr.onreadystatechange = function () {
     }
 }
 };
-xhr.open("GET", "data.json", true);
+xhr.open("GET", "walls.json", true);
 xhr.send();
 
 // Animate the scene
