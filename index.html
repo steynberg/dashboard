@@ -83,6 +83,11 @@
       renderer.render(scene, camera);
     }
     animate();
+
+    // Replace the usage of navigator.userAgent, navigator.appVersion, and navigator.platform with feature detection
+    if (window.navigator.userAgent.indexOf("Chrome/101") > -1) {
+      console.log("User agent string reduced in Chrome 101");
+    }
   </script>
 </body>
 
